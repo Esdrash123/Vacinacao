@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package ifpe.edu.br.builder;
+
 import java.util.Date;
 import ifpe.edu.br.entidades.Animal;
+
 /**
  *
  * @author paulo
@@ -20,8 +22,9 @@ public class BuilderAnimal {
         this.caracteristicaIndividuais = caracteristicaIndividuais;
     }
 
-    
-        
+    public BuilderAnimal() {
+    }
+
     public int getId() {
         return id;
     }
@@ -66,8 +69,8 @@ public class BuilderAnimal {
     private Date nascimento;
     private double peso;
     private String caracteristicaIndividuais;
-    
-    public Animal BuilderAnimal(){
-        return new Animal (id, nome, nascimento, peso, caracteristicaIndividuais);
+
+    public Animal BuilderAnimal() {
+        return new Animal(id, nome, nascimento, peso, caracteristicaIndividuais);
     }
 }

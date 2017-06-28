@@ -58,6 +58,10 @@ public class BuilderAplicacoes {
     private int hora;
     private String descricao;
 
+    public BuilderAplicacoes() {
+    }
+
+    
     public BuilderAplicacoes(int id, Date data, Date dataProxima, int hora, String descricao) {
         this.id = id;
         this.data = data;
