@@ -5,16 +5,27 @@
  */
 package ifpe.edu.br.servletCadastro;
 
+<<<<<<< HEAD:Vacinacao/src/java/ifpe/edu/br/servletCadastro/CadastroDoencaServlet.java
+=======
+package ifpe.edu.br.servlet;
+
+import ifpe.edu.br.builder.BuilderDoenca;
+import ifpe.edu.br.entidades.Doenca;
+>>>>>>> 0b5a3ddef94151c602464870935b253415916dec:Vacinacao/src/java/ifpe/edu/br/servlet/ServletDoenca.java
 import ifpe.edu.br.fachada.Fachada;
 import ifpe.edu.br.entidades.Doenca;
 import ifpe.edu.br.builder.BuilderDoenca;
 import java.io.IOException;
+<<<<<<< HEAD:Vacinacao/src/java/ifpe/edu/br/servletCadastro/CadastroDoencaServlet.java
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+import java.text.ParseException;
+>>>>>>> 0b5a3ddef94151c602464870935b253415916dec:Vacinacao/src/java/ifpe/edu/br/servlet/ServletDoenca.java
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

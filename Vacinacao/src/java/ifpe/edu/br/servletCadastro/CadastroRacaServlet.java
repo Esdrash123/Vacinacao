@@ -5,6 +5,9 @@
  */
 package ifpe.edu.br.servletCadastro;
 
+import ifpe.edu.br.builder.BuilderRaca;
+import ifpe.edu.br.entidades.Raca;
+import ifpe.edu.br.fachada.Fachada;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -31,19 +34,25 @@ public class CadastroRacaServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletRaca</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletRaca at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        String nome = request.parseInt("nome");
+        String caracteristica = request.parseInt("caracteristica");
+        String descricao = request.parseInt("descricao");
+        
+        BuilderRaca bRaca = new BuilderRaca(id, nome, descricao, caracteristica);
+        bRaca.setId(id);
+        bRaca.setNome(nome);
+        bRaca.setCaracteristica(caracteristica);
+        bRaca.setDescricao(descricao);
+        
+        Raca raca = bRaca.BuilderRaca();
+        Fachada.getInstance().inserir(raca);
+        
+        request.setAttribute("msg", "Raça Cadastrada com sucesso!");
+        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

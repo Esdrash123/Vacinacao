@@ -7,7 +7,10 @@ package ifpe.edu.br.fachada;
 
 import ifpe.edu.br.entidades.Animal;
 import ifpe.edu.br.entidades.Aplicacoes;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0b5a3ddef94151c602464870935b253415916dec
 import ifpe.edu.br.entidades.Doenca;
 import ifpe.edu.br.entidades.Raca;
 import ifpe.edu.br.entidades.Vacina;
@@ -24,6 +27,7 @@ import java.util.List;
 public class Fachada {
 
     private static Fachada myself = null;
+<<<<<<< HEAD
 
     private RepositorioGenerico<Animal, String> repositorioAnimal = null;
     private RepositorioGenerico<Aplicacoes, String> repositorioAplicacoes = null;
@@ -34,6 +38,18 @@ public class Fachada {
 
     private Fachada() {
         this.repositorioAnimal = FabricaRepositorio.manufactor(FabricaRepositorio.ANIMAL,
+=======
+    
+    private RepositorioGenerico<Animal,String> repositorioAnimal = null;
+    private RepositorioGenerico<Aplicacoes,String> repositorioAplicacoes = null;
+    private RepositorioGenerico<Doenca,String> repositorioDoenca = null;
+    private RepositorioGenerico<Raca,String> repositorioRaca = null;
+    private RepositorioGenerico<Vacina,String> repositorioVacina = null;
+    private RepositorioGenerico<Veterinario,String> repositorioVeterinario = null;
+    
+    private Fachada(){
+        this.repositorioAnimal = FabricaRepositorio.manufactor(FabricaRepositorio.ANIMAL, 
+>>>>>>> 0b5a3ddef94151c602464870935b253415916dec
                 FabricaRepositorio.MEMORIA);
         this.repositorioAplicacoes = FabricaRepositorio.manufactor(FabricaRepositorio.APLICACOES,
                 FabricaRepositorio.MEMORIA);
@@ -57,16 +73,26 @@ public class Fachada {
     public void alterar(Animal animal) {
         this.repositorioAnimal.alterar(animal);
     }
+<<<<<<< HEAD
 
     public Animal recuperarAminais(String nome) {
+=======
+    
+    public Animal recuperarAminais(String nome){
+>>>>>>> 0b5a3ddef94151c602464870935b253415916dec
         return this.repositorioAnimal.recuperar(nome);
     }
 
     public void deletar(Animal animal) {
         this.repositorioAnimal.remover(animal);
     }
+<<<<<<< HEAD
 
     public List<Animal> recuperarTodosAnimais() {
+=======
+    
+    public List<Animal> recuperarTodosAnimais(){
+>>>>>>> 0b5a3ddef94151c602464870935b253415916dec
         return this.repositorioAnimal.recuperarTodos();
     }
 
@@ -78,16 +104,30 @@ public class Fachada {
     public void alterar(Aplicacoes aplicacoes) {
         this.repositorioAplicacoes.alterar(aplicacoes);
     }
+<<<<<<< HEAD
 
     public Aplicacoes recuperarAplicacoes(String descricao) {
+=======
+    
+    public Aplicacoes recuperarAplicacoes(String descricao){
+>>>>>>> 0b5a3ddef94151c602464870935b253415916dec
         return this.repositorioAplicacoes.recuperar(descricao);
     }
 
     public void deletar(Aplicacoes aplicacoes) {
         this.repositorioAplicacoes.remover(aplicacoes);
     }
+<<<<<<< HEAD
 
     public List<Aplicacoes> recuperarTodasAplicacoes() {
+=======
+    
+    public List<Aplicacoes> recuperarTodasEdicoes(){
+        return this.repositorioAplicacoes.recuperarTodos();
+    }
+    
+    public List<Aplicacoes> recuperarTodasAplicacoes(){
+>>>>>>> 0b5a3ddef94151c602464870935b253415916dec
         return this.repositorioAplicacoes.recuperarTodos();
     }
 
@@ -174,5 +214,8 @@ public class Fachada {
     public List<Veterinario> recuperarTodosVeterinarios() {
         return this.repositorioVeterinario.recuperarTodos();
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0b5a3ddef94151c602464870935b253415916dec
 }
