@@ -25,7 +25,6 @@ public class BuilderAnimal {
     public BuilderAnimal() {
     }
 
-    
     public int getId() {
         return id;
     }

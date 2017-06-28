@@ -12,12 +12,15 @@ package ifpe.edu.br.servlet;
 import java.util.Date;
 import ifpe.edu.br.entidades.Aplicacoes;
 import ifpe.edu.br.builder.BuilderAplicacoes;
+import ifpe.edu.br.fachada.Fachada;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -74,7 +77,11 @@ public class ServletAplicacoes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServletAplicacoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -88,7 +95,11 @@ public class ServletAplicacoes extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServletAplicacoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
