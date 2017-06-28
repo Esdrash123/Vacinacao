@@ -2,23 +2,17 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
  */
 package ifpe.edu.br.servlet;
 
-import java.util.Date;
-import ifpe.edu.br.entidades.Aplicacoes;
-import ifpe.edu.br.builder.BuilderAplicacoes;
 import ifpe.edu.br.fachada.Fachada;
+import ifpe.edu.br.entidades.Animal;
+import ifpe.edu.br.builder.BuilderAnimal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -32,8 +26,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author paulo
  */
-@WebServlet(name = "AplicacoesServlet", urlPatterns = {"/AplicacoesServlet"})
-public class ServletAplicacoes extends HttpServlet {
+@WebServlet(name = "CadastroAnimalServlet", urlPatterns = {"/CadastroAnimalServlet"})
+public class CadastroAnimalServlet extends HttpServlet {
 
     /**
      * private int codigo; private String Nome; private String CNPJ; private
@@ -41,31 +35,30 @@ public class ServletAplicacoes extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
-
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        String descricao = request.getParameter("descricao");
+        String Nome = request.getParameter("Nome");
         int id = Integer.parseInt(request.getParameter("id"));
-        int hora = Integer.parseInt(request.getParameter("hora"));
-        Date data = formato.parse(request.getParameter("data"));
-        Date dataProxima = formato.parse(request.getParameter("dataProxima"));
+        String caracteristicaIndividuais = request.getParameter("caracteristicaIndividuais");
+        Date nascimento = formato.parse(request.getParameter("nascimento"));
+        double peso = Integer.parseInt(request.getParameter("peso"));;
 
-        BuilderAplicacoes bAplicacoes = new BuilderAplicacoes();
-        bAplicacoes.setId(id);
-        bAplicacoes.setDescricao(descricao);
-        bAplicacoes.setHora(hora);
-        bAplicacoes.setData(data);
-        bAplicacoes.setDataProxima(dataProxima);
+        BuilderAnimal bAnimal = new BuilderAnimal();
+        bAnimal.setId(id);
+        bAnimal.setNome(Nome);
+        bAnimal.setCaracteristicaIndividuais(caracteristicaIndividuais);
+        bAnimal.setNascimento(nascimento);
+        bAnimal.setPeso(peso);
 
-        Aplicacoes aplicacoes = bAplicacoes.BuilderAplicacoes();
+        Animal animal = bAnimal.BuilderAnimal();
 
-        Fachada.getInstance().inserir(aplicacoes);
+        Fachada.getInstance().inserir(animal);
 
-        request.setAttribute("msg", "Aplicacoes Cadastrado com sucesso!");
+        request.setAttribute("msg", "Animal Cadastrado com sucesso!");
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
     }
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -80,7 +73,7 @@ public class ServletAplicacoes extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(ServletAplicacoes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroAnimalServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -98,7 +91,7 @@ public class ServletAplicacoes extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(ServletAplicacoes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroAnimalServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -111,5 +104,4 @@ public class ServletAplicacoes extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
