@@ -72,5 +72,6 @@ public class BuilderAnimal {
 
     public Animal BuilderAnimal() {
         return new Animal(id, nome, nascimento, peso, caracteristicaIndividuais);
-    }
+
+}
 }
