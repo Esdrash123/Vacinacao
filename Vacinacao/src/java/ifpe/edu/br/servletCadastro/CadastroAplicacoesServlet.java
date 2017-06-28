@@ -7,7 +7,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ifpe.edu.br.servlet;
+package ifpe.edu.br.servletCadastro;
 
 import java.util.Date;
 import ifpe.edu.br.entidades.Aplicacoes;
