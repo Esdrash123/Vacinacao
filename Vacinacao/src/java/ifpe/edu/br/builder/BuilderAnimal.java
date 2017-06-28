@@ -69,8 +69,13 @@ public class BuilderAnimal {
     private Date nascimento;
     private double peso;
     private String caracteristicaIndividuais;
+<<<<<<< HEAD
 
     public Animal BuilderAnimal() {
         return new Animal(id, nome, nascimento, peso, caracteristicaIndividuais);
+=======
+    public Animal BuilderAnimal(){
+        return new Animal (id, nome, nascimento, peso, caracteristicaIndividuais);
+>>>>>>> 63e47711ec64bde6de9e1ba6d06fa7297e2dbe29
     }
 }
