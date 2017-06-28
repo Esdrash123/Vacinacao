@@ -7,13 +7,10 @@ package ifpe.edu.br.fachada;
 
 import ifpe.edu.br.entidades.Animal;
 import ifpe.edu.br.entidades.Aplicacoes;
-<<<<<<< HEAD
-=======
 import ifpe.edu.br.entidades.Doenca;
 import ifpe.edu.br.entidades.Raca;
 import ifpe.edu.br.entidades.Vacina;
 import ifpe.edu.br.entidades.Veterinario;
->>>>>>> 63e47711ec64bde6de9e1ba6d06fa7297e2dbe29
 import ifpe.edu.br.repositorios.FabricaRepositorio;
 import ifpe.edu.br.repositorios.RepositorioAplicacoes;
 import ifpe.edu.br.repositorios.RepositorioGenerico;
@@ -29,17 +26,10 @@ public class Fachada {
     
     private RepositorioGenerico<Animal,String> repositorioAnimal = null;
     private RepositorioGenerico<Aplicacoes,String> repositorioAplicacoes = null;
-<<<<<<< HEAD
-    private RepositorioGenerico<Aplicacoes,String> repositorioDoenca = null;
-    private RepositorioGenerico<Aplicacoes,String> repositorioRaca = null;
-    private RepositorioGenerico<Aplicacoes,String> repositorioVacina = null;
-    private RepositorioGenerico<Aplicacoes,String> repositorioVeterinario = null;
-=======
     private RepositorioGenerico<Doenca,String> repositorioDoenca = null;
     private RepositorioGenerico<Raca,String> repositorioRaca = null;
     private RepositorioGenerico<Vacina,String> repositorioVacina = null;
     private RepositorioGenerico<Veterinario,String> repositorioVeterinario = null;
->>>>>>> 63e47711ec64bde6de9e1ba6d06fa7297e2dbe29
     
     private Fachada(){
         this.repositorioAnimal = FabricaRepositorio.manufactor(FabricaRepositorio.ANIMAL, 
@@ -66,11 +56,7 @@ public class Fachada {
         this.repositorioAnimal.alterar(animal);
     }
     
-<<<<<<< HEAD
-    public Animal recuperarPersonagem(String nome){
-=======
     public Animal recuperarAminais(String nome){
->>>>>>> 63e47711ec64bde6de9e1ba6d06fa7297e2dbe29
         return this.repositorioAnimal.recuperar(nome);
     }
     
@@ -78,11 +64,7 @@ public class Fachada {
         this.repositorioAnimal.remover(animal);
     }
     
-<<<<<<< HEAD
-    public List<Animal> recuperarTodosPersonagens(){
-=======
     public List<Animal> recuperarTodosAnimais(){
->>>>>>> 63e47711ec64bde6de9e1ba6d06fa7297e2dbe29
         return this.repositorioAnimal.recuperarTodos();
     }
     
@@ -95,11 +77,7 @@ public class Fachada {
         this.repositorioAplicacoes.alterar(aplicacoes);
     }
     
-<<<<<<< HEAD
-    public Aplicacoes recuperarEdicao(String descricao){
-=======
     public Aplicacoes recuperarAplicacoes(String descricao){
->>>>>>> 63e47711ec64bde6de9e1ba6d06fa7297e2dbe29
         return this.repositorioAplicacoes.recuperar(descricao);
     }
     
@@ -107,12 +85,10 @@ public class Fachada {
         this.repositorioAplicacoes.remover(aplicacoes);
     }
     
-<<<<<<< HEAD
     public List<Aplicacoes> recuperarTodasEdicoes(){
         return this.repositorioAplicacoes.recuperarTodos();
     }
     
-=======
     public List<Aplicacoes> recuperarTodasAplicacoes(){
         return this.repositorioAplicacoes.recuperarTodos();
     }
@@ -184,6 +160,4 @@ public class Fachada {
     public List<Veterinario> recuperarTodosVeterinarios(){
         return this.repositorioVeterinario.recuperarTodos();
     }
-    
->>>>>>> 63e47711ec64bde6de9e1ba6d06fa7297e2dbe29
 }

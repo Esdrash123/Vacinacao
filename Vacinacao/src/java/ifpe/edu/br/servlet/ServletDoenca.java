@@ -6,20 +6,11 @@
 
 package ifpe.edu.br.servlet;
 
-import java.util.Date;
-import ifpe.edu.br.entidades.Aplicacoes;
-import ifpe.edu.br.builder.BuilderAplicacoes;
 import ifpe.edu.br.builder.BuilderDoenca;
 import ifpe.edu.br.entidades.Doenca;
 import ifpe.edu.br.fachada.Fachada;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
