@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package ifpe.edu.br.builder;
+
 import ifpe.edu.br.entidades.Doenca;
+
 /**
  *
  * @author paulo
@@ -40,10 +42,11 @@ public class BuilderDoenca {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-     private int id;
+    private int id;
     private String nome;
     private String descricao;
-public Doenca BuilderDoenca(){
-    return new Doenca(id, nome, descricao);
-}
+
+    public Doenca BuilderDoenca() {
+        return new Doenca(id, nome, descricao);
+    }
 }

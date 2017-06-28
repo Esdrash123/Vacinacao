@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ifpe.edu.br.builder;
+
 import ifpe.edu.br.entidades.Raca;
 
 /**
@@ -50,11 +51,12 @@ public class BuilderRaca {
     public void setCaracteristica(String caracteristica) {
         this.caracteristica = caracteristica;
     }
-      private int id;
-    private String nome;   
+    private int id;
+    private String nome;
     private String descricao;
     private String caracteristica;
-public Raca BuilderRaca(){
-    return new Raca(id, nome, caracteristica, descricao);
-}
+
+    public Raca BuilderRaca() {
+        return new Raca(id, nome, caracteristica, descricao);
+    }
 }
