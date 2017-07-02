@@ -6,6 +6,7 @@ import ifpe.edu.br.entidades.Doenca;
 import ifpe.edu.br.entidades.Raca;
 import ifpe.edu.br.entidades.Vacina;
 import ifpe.edu.br.entidades.Veterinario;
+
 import ifpe.edu.br.repositorios.FabricaRepositorios;
 import ifpe.edu.br.repositorios.RepositorioGenerico;
 import ifpe.edu.br.repositorios.RepositorioAnimal;
@@ -16,10 +17,7 @@ import ifpe.edu.br.repositorios.RepositorioVacina;
 import ifpe.edu.br.repositorios.RepositorioVeterinario;
 import java.util.*;
 
-/**
- *
- * @author MEU
- */
+
 public class Fachada {
 
     private static Fachada myself = null;
@@ -45,119 +43,113 @@ public class Fachada {
         this.repositorioVeterinario = FabricaRepositorios.manufactor(FabricaRepositorios.VETERINARIO,
                 FabricaRepositorios.MEMORIA);
     }
-
-    public static Fachada getInstance() {
-        if (myself == null) {
+     public static Fachada getInstance(){
+        if(myself == null){
             myself = new Fachada();
         }
         return myself;
     }
-
+  
     public void inserir(Animal animal) {
         this.repositorioAnimal.inserir(animal);
     }
-
     public void inserir(Aplicacoes aplicacoes) {
         this.repositorioAplicacoes.inserir(aplicacoes);
     }
-
     public void inserir(Doenca doenca) {
         this.repositorioDoenca.inserir(doenca);
     }
-
     public void inserir(Vacina vacina) {
         this.repositorioVacina.inserir(vacina);
     }
-
     public void inserir(Veterinario veterinario) {
         this.repositorioVeterinario.inserir(veterinario);
     }
+    public void inserir(Raca raca) {
+        this.repositorioRaca.cadastrar(raca);
+    }
 
+    
+    
+    public void alterar(Aplicacoes aplicacoes) {
+        this.repositorioAplicacoes.alterar(aplicacoes);
+    }
+    public void alterar(Doenca doenca) {
+        this.repositorioDoenca.alterar(doenca);
+    }
+    public void alterar(Raca raca) {
+        this.repositorioRaca.alterar(raca);
+    }
+    public void alterar(Vacina vacina) {
+        this.repositorioVacina.alterar(vacina);
+    }
+    public void alterar(Veterinario veterinario) {
+        this.repositorioVeterinario.alterar(veterinario);
+    }
     public void alterar(Animal animal) {
         this.repositorioAnimal.alterar(animal);
     }
 
-    public void alterar(Aplicacoes aplicacoes) {
-        this.repositorioAplicacoes.alterar(aplicacoes);
-    }
-
-    public void alterar(Doenca doenca) {
-        this.repositorioDoenca.alterar(doenca);
-    }
-
-    public void alterar(Raca raca) {
-        this.repositorioRaca.alterar(raca);
-    }
-
-    public void alterar(Vacina vacina) {
-        this.repositorioVacina.alterar(vacina);
-    }
-
-    public void alterar(Veterinario veterinario) {
-        this.repositorioVeterinario.alterar(veterinario);
-    }
-
-    public Animal recuperarAnimal(String nome) {
+    
+    
+    public Animal recuperarAminais(String nome) {
         return this.repositorioAnimal.recuperar(nome);
     }
-
     public Aplicacoes recuperarAplicacoes(String nome) {
         return this.repositorioAplicacoes.recuperar(nome);
     }
-
     public Doenca recuperarDoenca(String nome) {
         return this.repositorioDoenca.recuperar(nome);
     }
-
+    public Vacina recuperarVacina(String nome) {
+        return this.repositorioVacina.recuperar(nome);
+    }
+    public Veterinario recuperarVeterinario(String nome) {
+        return this.repositorioVeterinario.recuperar(nome);
+    }
     public Raca recuperarRaca(String nome) {
         return this.repositorioRaca.recuperar(nome);
     }
 
-    public Vacina recuperarVacina(String nome) {
-        return this.repositorioVacina.recuperar(nome);
-    }
-
-    public Veterinario recuperarVeterinario(String nome) {
-        return this.repositorioVeterinario.recuperar(nome);
-    }
     
-    public void deletar(Animal animal){
-        this.repositorioAnimal.deletar(animal);
+    
+    public void deletar(Animal animal) {
+        this.repositorioAnimal.remover(animal);
     }
-     public void deletar(Aplicacoes aplicacoes){
-        this.repositorioAplicacoes.deletar(aplicacoes);
+    public void deletar(Aplicacoes aplicacoes) {
+        this.repositorioAplicacoes.remover(aplicacoes);
     }
-      public void deletar(Doenca doenca){
-        this.repositorioDoenca.deletar(doenca);
+    public void deletar(Doenca doenca) {
+        this.repositorioDoenca.remover(doenca);
     }
-       public void deletar(Raca raca){
+    public void deletar(Raca raca) {
         this.repositorioRaca.deletar(raca);
     }
-        public void Vacina(Animal vacina){
+    public void deletar(Vacina vacina) {
         this.repositorioVacina.deletar(vacina);
     }
-         public void deletar(Veterinario veterinario){
+    public void deletar(Veterinario veterinario) {
         this.repositorioVeterinario.deletar(veterinario);
     }
-         
-      public List<Animal> recuperarTodosAnimais(){
-          return this.repositorioAnimal.recuperarTodos();
-      }  
-      public List<Aplicacoes> recuperarTodasAplicacoes(){
-          return this.repositorioAplicacoes.recuperarTodos();
-      }
-      public List<Doenca> recuperarTodasDoencas(){
-          return this.repositorioDoenca.recuperarTodos();
-      }
-      public List<Raca> recuperarTodasRacas(){
-          return this.repositorioRaca.recuperarTodos();
-      }
-      public List<Vacina> recuperarTodasVacinas(){
-          return this.repositorioVacina.recuperarTodos();
-      }
-      public List<Veterinario> recuperarTodosVeterinarios(){
-          return this.repositorioVeterinario.recuperarTodos();
-      }
-                    
 
+
+
+    public List<Animal> recuperarTodosAnimais() {
+        return this.repositorioAnimal.recuperarTodos();
+    }
+    public List<Aplicacoes> recuperarTodasAplicacoes() {
+        return this.repositorioAplicacoes.recuperarTodos();
+    }
+    public List<Doenca> recuperarTodasDoencas() {
+        return this.repositorioDoenca.recuperarTodos();
+    }
+    public List<Raca> recuperarTodasRacas() {
+        return this.repositorioRaca.recuperarTodos();
+    }
+    public List<Vacina> recuperarTodasVacinas() {
+        return this.repositorioVacina.recuperarTodos();
+    }
+    public List<Veterinario> recuperarTodosVeterinarios() {
+        return this.repositorioVeterinario.recuperarTodos();
+    }
 }

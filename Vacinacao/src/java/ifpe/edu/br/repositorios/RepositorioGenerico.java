@@ -49,4 +49,6 @@ public interface RepositorioGenerico<T, G> {
 
     public void deletar(Veterinario veterinario);
 
+    public void deletar(Vacina vacina);
+
 }
