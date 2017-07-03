@@ -51,19 +51,19 @@ public class Fachada {
     }
   
     public void inserir(Animal animal) {
-        this.repositorioAnimal.inserir(animal);
+        this.repositorioAnimal.cadastrar(animal);
     }
     public void inserir(Aplicacoes aplicacoes) {
-        this.repositorioAplicacoes.inserir(aplicacoes);
+        this.repositorioAplicacoes.cadastrar(aplicacoes);
     }
     public void inserir(Doenca doenca) {
-        this.repositorioDoenca.inserir(doenca);
+        this.repositorioDoenca.cadastrar(doenca);
     }
     public void inserir(Vacina vacina) {
-        this.repositorioVacina.inserir(vacina);
+        this.repositorioVacina.cadastrar(vacina);
     }
     public void inserir(Veterinario veterinario) {
-        this.repositorioVeterinario.inserir(veterinario);
+        this.repositorioVeterinario.cadastrar(veterinario);
     }
     public void inserir(Raca raca) {
         this.repositorioRaca.cadastrar(raca);
@@ -123,13 +123,13 @@ public class Fachada {
         this.repositorioDoenca.remover(doenca);
     }
     public void deletar(Raca raca) {
-        this.repositorioRaca.deletar(raca);
+        this.repositorioRaca.remover(raca);
     }
     public void deletar(Vacina vacina) {
-        this.repositorioVacina.deletar(vacina);
+        this.repositorioVacina.remover(vacina);
     }
     public void deletar(Veterinario veterinario) {
-        this.repositorioVeterinario.deletar(veterinario);
+        this.repositorioVeterinario.remover(veterinario);
     }
 
 

@@ -29,26 +29,5 @@ public interface RepositorioGenerico<T, G> {
 
     public List<T> recuperarTodos();
 
-    public void inserir(Animal animal);
-
-    public void inserir(Aplicacoes aplicacoes);
-
-    public void inserir(Doenca doenca);
-
-    public void inserir(Vacina vacina);
-
-    public void inserir(Veterinario veterinario);
-
-    public void deletar(Animal animal);
-
-    public void deletar(Aplicacoes aplicacoes);
-
-    public void deletar(Doenca doenca);
-
-    public void deletar(Raca raca);
-
-    public void deletar(Veterinario veterinario);
-
-    public void deletar(Vacina vacina);
-
+   
 }

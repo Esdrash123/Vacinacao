@@ -19,35 +19,35 @@ import java.util.ArrayList;
  * @author esdra
  */
 public class RepositorioRaca implements RepositorioGenerico<Raca, Integer> {
-    
+
     List<Raca> listaRaca = new ArrayList<>();
-    
+
     @Override
     public void cadastrar(Raca t) {
         this.listaRaca.add(t);
     }
-    
+
     @Override
     public void remover(Raca t) {
         this.listaRaca.remove(t);
     }
-    
+
     @Override
     public void alterar(Raca t) {
         for (Raca r : this.listaRaca) {
             if (r.getId() == t.getId()) {
-                
+
                 r.setId(t.getId());
                 r.setNome(t.getNome());
                 r.setCaracteristica(t.getCaracteristica());
                 r.setDescricao(t.getDescricao());
-                
+
             }
-            
+
         }
-        
+
     }
-    
+
     @Override
     public Raca recuperar(Integer id) {
         for (Raca d : this.listaRaca) {
@@ -57,60 +57,10 @@ public class RepositorioRaca implements RepositorioGenerico<Raca, Integer> {
         }
         return null;
     }
-    
+
     @Override
     public List<Raca> recuperarTodos() {
         return this.listaRaca;
     }
 
-    @Override
-    public void inserir(Animal animal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void inserir(Aplicacoes aplicacoes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void inserir(Doenca doenca) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void inserir(Vacina vacina) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void inserir(Veterinario veterinario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deletar(Animal animal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deletar(Aplicacoes aplicacoes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deletar(Doenca doenca) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deletar(Raca raca) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deletar(Veterinario veterinario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
