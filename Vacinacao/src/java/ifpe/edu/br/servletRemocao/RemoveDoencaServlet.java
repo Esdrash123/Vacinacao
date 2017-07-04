@@ -1,10 +1,18 @@
-package ifpe.edu.br.servletRemoção;
+package ifpe.edu.br.servletRemocao;
 
-import ifpe.edu.br.builder.BuilderVeterinario;
-import ifpe.edu.br.entidades.Veterinario;
+import ifpe.edu.br.builder.BuilderDoenca;
+import ifpe.edu.br.entidades.Doenca;
 import ifpe.edu.br.fachada.Fachada;
+import ifpe.edu.br.entidades.Doenca;
+import ifpe.edu.br.builder.BuilderDoenca;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.text.ParseException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,31 +21,30 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author MEU
+ * @author Meu
  */
-@WebServlet(name = "RemoveVeterinarioServlet", urlPatterns = {"/RemoveVeterinarioServlet"})
-public class RemoveVeterinarioServlet extends HttpServlet {
+@WebServlet(name = "RemoveDoencaServlet", urlPatterns = {"/RemoveDoencaServlet"})
+public class RemoveDoencaServlet extends HttpServlet {
 
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
+
         int id = Integer.parseInt(request.getParameter("id"));
-        String nome = request.getParameter("name");
-        String endereco = request.getParameter("endereco");
-        String telefone = request.getParameter("telefone");
+        String nome = request.getParameter("nome");
+        String descricao = request.getParameter("descricao");
 
-        BuilderVeterinario bVeterinario = new BuilderVeterinario();
+        BuilderDoenca bDoenca = new BuilderDoenca(id, nome, descricao);
+        bDoenca.setId(id);
+        bDoenca.setNome(nome);
+        bDoenca.setDescricao(descricao);
 
-        bVeterinario.setEndereco(endereco);
-        bVeterinario.setId(id);
-        bVeterinario.setNome(nome);
-        bVeterinario.setTelefone(telefone);
+        Doenca doenca = bDoenca.BuilderDoenca();
 
-        Veterinario vetrinario = bVeterinario.BuilderVeterinario();
+        Fachada.getInstance().deletar(doenca);
 
-        Fachada.getInstance().deletar(vetrinario);
-
-        request.setAttribute("msg", "Vacina removida com sucesso!");
-        getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+        request.setAttribute("msg", "Doença removida com sucesso!");
+        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
     }
 
@@ -53,7 +60,11 @@ public class RemoveVeterinarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(RemoveDoencaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -67,7 +78,11 @@ public class RemoveVeterinarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(RemoveDoencaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -79,4 +94,5 @@ public class RemoveVeterinarioServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

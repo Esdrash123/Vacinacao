@@ -1,7 +1,7 @@
-package ifpe.edu.br.servletRemoção;
+package ifpe.edu.br.servletRemocao;
 
-import ifpe.edu.br.builder.BuilderRaca;
-import ifpe.edu.br.entidades.Raca;
+import ifpe.edu.br.builder.BuilderVeterinario;
+import ifpe.edu.br.entidades.Veterinario;
 import ifpe.edu.br.fachada.Fachada;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,32 +15,32 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author MEU
  */
-@WebServlet(name = "RemoveRacaServlet", urlPatterns = {"/RemoveRacaServlet"})
-public class RemoveRacaServlet extends HttpServlet {
+@WebServlet(name = "RemoveVeterinarioServlet", urlPatterns = {"/RemoveVeterinarioServlet"})
+public class RemoveVeterinarioServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         int id = Integer.parseInt(request.getParameter("id"));
-        String nome = request.getParameter("nome");
-        String caracteristica = request.getParameter("caracteristica");
-        String descricao = request.getParameter("descricao");
-        
-        
-        BuilderRaca bRaca = new BuilderRaca(id, nome, descricao, caracteristica);
-        bRaca.setId(id);
-        bRaca.setNome(nome);
-        bRaca.setCaracteristica(caracteristica);
-        bRaca.setDescricao(descricao);
-        
-        Raca raca = bRaca.BuilderRaca();
-        
-        Fachada.getInstance().deletar(raca);
-        
-        request.setAttribute("msg", "Raça Cadastrada com sucesso!");
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-   
+        String nome = request.getParameter("name");
+        String endereco = request.getParameter("endereco");
+        String telefone = request.getParameter("telefone");
+
+        BuilderVeterinario bVeterinario = new BuilderVeterinario();
+
+        bVeterinario.setEndereco(endereco);
+        bVeterinario.setId(id);
+        bVeterinario.setNome(nome);
+        bVeterinario.setTelefone(telefone);
+
+        Veterinario vetrinario = bVeterinario.BuilderVeterinario();
+
+        Fachada.getInstance().deletar(vetrinario);
+
+        request.setAttribute("msg", "Vacina removida com sucesso!");
+        getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -79,5 +79,4 @@ public class RemoveRacaServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

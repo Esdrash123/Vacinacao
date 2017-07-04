@@ -1,46 +1,41 @@
-package ifpe.edu.br.servletRemoção;
+package ifpe.edu.br.servletRemocao;
 
-import java.util.*;
-import ifpe.edu.br.entidades.Aplicacoes;
-import ifpe.edu.br.builder.BuilderAplicacoes;
+import ifpe.edu.br.builder.BuilderVacina;
+import ifpe.edu.br.entidades.Vacina;
 import ifpe.edu.br.fachada.Fachada;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author MEU
  */
-@WebServlet(name = "RemoveAplicacoesServlet", urlPatterns = {"/RemoveAplicacoesServlet"})
-public class RemoveAplicacoesServlet extends HttpServlet {
+@WebServlet(name = "RemoveVacinaServlet", urlPatterns = {"/RemoveVacinaServlet"})
+public class RemoveVacinaServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ParseException {
+            throws ServletException, IOException {
 
-        String descricao = request.getParameter("descricao");
         int id = Integer.parseInt(request.getParameter("id"));
+        String nome = request.getParameter("nome");
+        String descricao = request.getParameter("descricao");
+             
+        BuilderVacina bVacina = new BuilderVacina();
+        bVacina.setId(id);
+        bVacina.setNome(nome);
+        bVacina.setDescricao(descricao);
+       
+        Vacina vacina = bVacina.BuilderVacina();
 
-        BuilderAplicacoes bAplicacoes = new BuilderAplicacoes();
-        bAplicacoes.setDescricao(descricao);
-        bAplicacoes.setId(id);
+        Fachada.getInstance().deletar(vacina);
 
-        Aplicacoes aplicacoes = bAplicacoes.BuilderAplicacoes();
-
-        Fachada.getInstance().deletar(aplicacoes);
-
-        request.setAttribute("msg", "AplicaÇÕes removida com sucesso!");
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        request.setAttribute("msg", "Vacina removida com sucesso!");
+        getServletContext().getRequestDispatcher("/index.html").forward(request, response);
 
     }
 
@@ -56,11 +51,7 @@ public class RemoveAplicacoesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(RemoveAplicacoesServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -74,11 +65,7 @@ public class RemoveAplicacoesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(RemoveAplicacoesServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

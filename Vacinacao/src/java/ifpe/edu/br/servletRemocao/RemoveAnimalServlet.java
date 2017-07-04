@@ -1,4 +1,4 @@
-package ifpe.edu.br.servletRemoção;
+package ifpe.edu.br.servletRemocao;
 
 import ifpe.edu.br.fachada.Fachada;
 import ifpe.edu.br.entidades.Animal;

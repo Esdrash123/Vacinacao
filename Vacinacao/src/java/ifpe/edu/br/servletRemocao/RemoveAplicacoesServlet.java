@@ -1,49 +1,45 @@
-package ifpe.edu.br.servletRemoção;
+package ifpe.edu.br.servletRemocao;
 
-import ifpe.edu.br.builder.BuilderDoenca;
-import ifpe.edu.br.entidades.Doenca;
+import java.util.*;
+import ifpe.edu.br.entidades.Aplicacoes;
+import ifpe.edu.br.builder.BuilderAplicacoes;
 import ifpe.edu.br.fachada.Fachada;
-import ifpe.edu.br.entidades.Doenca;
-import ifpe.edu.br.builder.BuilderDoenca;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.text.ParseException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Meu
+ * @author MEU
  */
-@WebServlet(name = "RemoveDoencaServlet", urlPatterns = {"/RemoveDoencaServlet"})
-public class RemoveDoencaServlet extends HttpServlet {
+@WebServlet(name = "RemoveAplicacoesServlet", urlPatterns = {"/RemoveAplicacoesServlet"})
+public class RemoveAplicacoesServlet extends HttpServlet {
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
 
-        int id = Integer.parseInt(request.getParameter("id"));
-        String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
+        int id = Integer.parseInt(request.getParameter("id"));
 
-        BuilderDoenca bDoenca = new BuilderDoenca(id, nome, descricao);
-        bDoenca.setId(id);
-        bDoenca.setNome(nome);
-        bDoenca.setDescricao(descricao);
+        BuilderAplicacoes bAplicacoes = new BuilderAplicacoes();
+        bAplicacoes.setDescricao(descricao);
+        bAplicacoes.setId(id);
 
-        Doenca doenca = bDoenca.BuilderDoenca();
+        Aplicacoes aplicacoes = bAplicacoes.BuilderAplicacoes();
 
-        Fachada.getInstance().deletar(doenca);
+        Fachada.getInstance().deletar(aplicacoes);
 
-        request.setAttribute("msg", "Doença removida com sucesso!");
+        request.setAttribute("msg", "AplicaÇÕes removida com sucesso!");
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
     }
@@ -63,7 +59,7 @@ public class RemoveDoencaServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(RemoveDoencaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RemoveAplicacoesServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -81,7 +77,7 @@ public class RemoveDoencaServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ParseException ex) {
-            Logger.getLogger(RemoveDoencaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RemoveAplicacoesServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
