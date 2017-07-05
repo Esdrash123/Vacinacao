@@ -30,8 +30,13 @@ import javax.servlet.http.HttpSession;
 public class CadastroAnimalServlet extends HttpServlet {
 
     /**
-     * private int codigo; private String Nome; private String CNPJ; private
-     * String OAB; private String Telefone; private String Endereco;
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
@@ -40,7 +45,7 @@ public class CadastroAnimalServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String caracteristicaIndividuais = request.getParameter("caracteristicaIndividuais");
         Date nascimento = formato.parse(request.getParameter("nascimento"));
-        double peso = Integer.parseInt(request.getParameter("peso"));;
+        double peso = Integer.parseInt(request.getParameter("peso"));
 
         BuilderAnimal bAnimal = new BuilderAnimal();
         bAnimal.setId(id);

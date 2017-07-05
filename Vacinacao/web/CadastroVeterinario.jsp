@@ -1,9 +1,11 @@
+<%-- 
+    Document   : CadastroVeterinario
+    Created on : 05/07/2017, 12:42:09
+    Author     : esdra
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -14,10 +16,10 @@ and open the template in the editor.
         <h1>Cadastro de Apicações</h1>
         <form method="post" action="CadastroAplicacoesServlet"><br/>
             Id:<input type="text" name="id"/><br/>
-            Descrição:<input type="text" name="descricao"/><br/>
-            Hora:<input type="text" name="hora"/><br/>
-            Data:<input type="text" name="data"/><br/>
-            DataProxima:<input type="text" name="dataProxima"/><br/>
+            nome:<input type="text" name="nome"/><br/>
+            Crv<input type="text" name="crv"/><br/>
+            endereco<input type="text" name="endereco"/><br/>
+            telefone<input type="text" name="telefone"/><br/>
             <input type="submit" value="cadastrar"/>
         </form>
     </body>
