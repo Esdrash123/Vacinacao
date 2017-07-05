@@ -14,5 +14,6 @@
     <body>
         <h1>Bem vindo ao sistema de vacinação! </h1>
         <a href="PaginaDeCadastros.jsp">Pagina de cadastros</a>
+        <a href="PaginaDeAlteracoes.jsp">Pagina de alterações</a>
     </body>
 </html>

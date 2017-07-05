@@ -18,7 +18,7 @@
             Id:<input type="text" name="id"/><br/>
             Nome:<input type="text" name="nome"/><br/>
             Nascimento:<input type="text" name="nascimento"/><br/>
-            Peso:<input type="text" name="Peso:"/><br/>
+            Peso:<input type="text" name="Peso"/><br/>
             caracteristicaIndividuais<input type="text" name="caracteristicaIndividuais"/><br/>
             <input type="submit" value="cadastrar"/>
         </form>

@@ -45,7 +45,7 @@ public class CadastroAnimalServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String caracteristicaIndividuais = request.getParameter("caracteristicaIndividuais");
         Date nascimento = formato.parse(request.getParameter("nascimento"));
-        double peso = Integer.parseInt(request.getParameter("peso"));
+        double peso = Double.parseDouble(request.getParameter("peso"));
 
         BuilderAnimal bAnimal = new BuilderAnimal();
         bAnimal.setId(id);
