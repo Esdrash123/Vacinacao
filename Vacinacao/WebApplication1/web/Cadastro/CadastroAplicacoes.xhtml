@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="menu.xhtml"/>
+        <h:form id="formCadastroAplicacoes">
+            <p:growl id="dro" life="4000"/>
+            <p:fieldset legend="Cadastro de Aplicações">
+                <p:messages/>
+                <p:panelGrid columns="3">
+                    <h:outputText value="Data de Aplicação*:"/>
+                    <p:inputText id="txtData" value="#{bAplicacoes.data}"
+                                 required="true" requiredMessage="O campo data é obrigatório"/>
+                    <p:message for="txtData"/>
+
+                    <h:outputText value="Descrição*:"/>
+                    <p:inputText id="txtdescricao" value="#{bAplicacoes.descricao}"
+                                 required="true" requiredMessage="O campo descrição é obrigatório"/>
+                    <p:message for="txtdescricao"/>
+
+                    <h:outputText value="Data da Proxima*:"/>
+                    <p:inputText id="txtdataProxima" value="#{bAplicacoes.dataProxima}"
+                                 required="true" requiredMessage="O campo data da proxima é obrigatório"/>
+                    <p:message for="txtdataProxima"/>
+
+                    <h:outputText value="Hora:"/>
+                    <p:inputText  value="#{bAplicacoes.hora}"
+                                  <h:outputText/>
+
+                </p:panelGrid>
+                <p:commandButton value="Cadastrar"
+                                 oncomplete="PF('widDialAplicacoes').show()"/>
+            </p:fieldset>
+
+            <p:confirmDialog id="dialAplicacoes" message="Deseja realmente cadastrar essa Aplicação?"
+                             visible="false" widgetVar="widDialAplicacoes" showEffect="fade"
+                             hideEffect="explode">
+                <f:facet name="header">
+                    ATENÇÃO!
+                </f:facet>
+                <p:commandButton value="sim"
+                                 action="#{aplicacoesController.cadastrar(bAplicaoes.builderAplicaoes())}"
+                                 oncomplete="PF('widDialAplicacoes').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialAplicacoes').hide()"/>
+            </p:confirmDialog>
+            
+            <p:dialog id="dialConfirma" visible="false" resizable="false" modal="true"
+                      widgetVar="widDialConfirm">
+                <h:outputText value="Cadastro realizado com sucesso!"/><br/>
+                <p:commandButton value="OK" oncomplete="PF('widDialConfirm').hide()"/>
+            </p:dialog>
+    </h:body>
+</html>
+

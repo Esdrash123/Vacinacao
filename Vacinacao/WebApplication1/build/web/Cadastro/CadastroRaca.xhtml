@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="menu.xhtml"/>
+        <h:form id="formCadastroRaca">
+            <p:growl id="dro" life="4000"/>
+            <p:fieldset legend="Cadastro da Raça">
+                <p:messages/>
+                <p:panelGrid columns="3">
+                    <h:outputText value="Nome*:"/>
+                    <p:inputText id="txtNome" value="#{bRaca.nome}"
+                                 required="true" requiredMessage="O campo nome é obrigatório"/>
+                    <p:message for="txtNome"/>
+
+                    <h:outputText value="Descrição*:"/>
+                    <p:inputText id="txtcaracteristicaIndividuais" value="#{bRaca.descricao}"
+                                 required="true" requiredMessage="O campo de descriçao é obrigatório"/>
+                    <p:message for="txtdescricao"/>
+                    
+                    <h:outputText value="Caracteristica:"/>
+                    <p:inputText value="#{bRaca.caracteristica}"
+                                 <h:outputText/>
+
+                    
+
+                </p:panelGrid>
+                <p:commandButton value="Cadastrar"
+                                 oncomplete="PF('widDialRaca').show()"/>
+            </p:fieldset>
+
+            <p:confirmDialog id="dialDescricao" message="Deseja realmente cadastrar esse Raça?"
+                             visible="false" widgetVar="widDialDescricao" showEffect="fade"
+                             hideEffect="explode">
+                <f:facet name="header">
+                    ATENÇÃO!
+                </f:facet>
+                <p:commandButton value="sim"
+                                 action="#{racaController.cadastrar(bRaca.builderRaca())}"
+                                 oncomplete="PF('widDialRaca').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialRaca').hide()"/>
+            </p:confirmDialog>
+            
+            <p:dialog id="dialConfirma" visible="false" resizable="false" modal="true"
+                      widgetVar="widDialConfirm">
+                <h:outputText value="Cadastro realizado com sucesso!"/><br/>
+                <p:commandButton value="OK" oncomplete="PF('widDialConfirm').hide()"/>
+            </p:dialog>
+    </h:body>
+</html>
+

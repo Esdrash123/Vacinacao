@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="menu.xhtml"/>
+        <h:form id="formCadastroAnimal">
+            <p:growl id="dro" life="4000"/>
+            <p:fieldset legend="Cadastro do Animal">
+                <p:messages/>
+                <p:panelGrid columns="3">
+                    <h:outputText value="Nome*:"/>
+                    <p:inputText id="txtNome" value="#{bAnimal.nome}"
+                                 required="true" requiredMessage="O campo nome é obrigatório"/>
+                    <p:message for="txtNome"/>
+
+                    <h:outputText value="Caracteristicas Individuais*:"/>
+                    <p:inputText id="txtcaracteristicaIndividuais" value="#{bAnimal.nome}"
+                                 required="true" requiredMessage="O campo de caracteristicas individuais é obrigatório"/>
+                    <p:message for="txtcaracteristicaIndividuais"/>
+
+                    <h:outputText value="Data de Nascimento*:"/>
+                    <p:inputText id="txtnascimento" value="#{bAnimal.nome}"
+                                 required="true" requiredMessage="O campo data de nascimento é obrigatório"/>
+                    <p:message for="txtnascimento"/>
+
+                    <h:outputText value="Peso:"/>
+                    <p:inputText  value="#{bAnimal.nome}"
+                                  <h:outputText/>
+
+                </p:panelGrid>
+                <p:commandButton value="Cadastrar"
+                                 oncomplete="PF('widDialAnimal').show()"/>
+            </p:fieldset>
+
+            <p:confirmDialog id="dialAnimal" message="Deseja realmente cadastrar esse Animal?"
+                             visible="false" widgetVar="widDialAnimal" showEffect="fade"
+                             hideEffect="explode">
+                <f:facet name="header">
+                    ATENÇÃO!
+                </f:facet>
+                <p:commandButton value="sim"
+                                 action="#{animalController.cadastrar(bAnimal.builderAnimal())}"
+                                 oncomplete="PF('widDialAnimal').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialAnimal').hide()"/>
+            </p:confirmDialog>
+            
+            <p:dialog id="dialConfirma" visible="false" resizable="false" modal="true"
+                      widgetVar="widDialConfirm">
+                <h:outputText value="Cadastro realizado com sucesso!"/><br/>
+                <p:commandButton value="OK" oncomplete="PF('widDialConfirm').hide()"/>
+            </p:dialog>
+    </h:body>
+</html>
+
